@@ -40,10 +40,16 @@ function cargarMaterias(padron) {
 function renderMaterias(data, padron) {
   materiasContainer.innerHTML = "";
 
-  Object.entries(data).forEach(([año, materias]) => {
+  // Orden de años para columnas
+  const ordenAños = ["CBC", "1", "2", "3", "4", "5"];
+
+  ordenAños.forEach(añoKey => {
+    const materias = data[añoKey];
+    if (!materias) return;
+
     const añoDiv = document.createElement("div");
-    añoDiv.innerHTML = `<h2>Año ${año}</h2>`;
-    añoDiv.style.marginBottom = "1.5rem";
+    añoDiv.className = "año-columna";
+    añoDiv.innerHTML = `<h2>${añoKey === "CBC" ? "CBC" : añoKey + "° Año"}</h2>`;
 
     materias.forEach(materia => {
       const estado = progresoGlobal[materia.codigo] || {
@@ -52,6 +58,7 @@ function renderMaterias(data, padron) {
         nota: ""
       };
 
+      // Ver si puede cursar según correlativas (usamos misma lógica)
       const puedeCursar = materia.correlativas_cursada.every(cor => {
         const estadoCor = progresoGlobal[cor.codigo];
         if (!estadoCor) return false;
@@ -71,42 +78,40 @@ function renderMaterias(data, padron) {
         materiaDiv.classList.add("bloqueada");
       }
 
-      const label = document.createElement("strong");
-      label.textContent = materia.nombre;
-      materiaDiv.appendChild(label);
+      // Código de materia (en vez de nombre)
+      const codigoSpan = document.createElement("span");
+      codigoSpan.textContent = materia.codigo;
+      materiaDiv.appendChild(codigoSpan);
 
-      // TPs
+      // Controles para TPs y Final
+      const controlesDiv = document.createElement("div");
+      controlesDiv.className = "controles";
+
+      // Checkbox TPs
+      const labelTps = document.createElement("label");
       const cbTps = document.createElement("input");
       cbTps.type = "checkbox";
       cbTps.checked = estado.tps_aprobado;
       cbTps.disabled = !puedeCursar;
       cbTps.addEventListener("change", () => guardarProgreso(padron));
-      materiaDiv.appendChild(document.createTextNode(" - TPs "));
-      materiaDiv.appendChild(cbTps);
+      labelTps.appendChild(cbTps);
+      labelTps.appendChild(document.createTextNode("TP"));
+      controlesDiv.appendChild(labelTps);
 
-      // Final
+      // Solo materias de examen tienen opción a Final
       if (materia.tipo === "examen") {
+        const labelFinal = document.createElement("label");
         const cbFinal = document.createElement("input");
         cbFinal.type = "checkbox";
         cbFinal.checked = estado.final_aprobado;
         cbFinal.disabled = !puedeCursar;
         cbFinal.addEventListener("change", () => guardarProgreso(padron));
-        materiaDiv.appendChild(document.createTextNode(" Final "));
-        materiaDiv.appendChild(cbFinal);
+        labelFinal.appendChild(cbFinal);
+        labelFinal.appendChild(document.createTextNode("Final"));
+        controlesDiv.appendChild(labelFinal);
       }
 
-      // Nota
-      const notaInput = document.createElement("input");
-      notaInput.type = "number";
-      notaInput.min = "0";
-      notaInput.max = "10";
-      notaInput.value = estado.nota || "";
-      notaInput.placeholder = "Nota";
-      notaInput.disabled = !puedeCursar;
-      notaInput.style.marginLeft = "0.5rem";
-      notaInput.addEventListener("change", () => guardarProgreso(padron));
-      materiaDiv.appendChild(notaInput);
-
+      materiaDiv.appendChild(controlesDiv);
       añoDiv.appendChild(materiaDiv);
     });
 
