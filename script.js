@@ -1,11 +1,10 @@
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_DOMINIO.firebaseapp.com",
-  databaseURL: "https://TU_DOMINIO.firebaseio.com",
-  projectId: "TU_DOMINIO",
-  storageBucket: "TU_DOMINIO.appspot.com",
-  messagingSenderId: "TU_ID",
-  appId: "TU_APP_ID"
+  apiKey: "AIzaSyD3rr59_b4bLPs5dDa3VyKjghs12b4Z1-s",
+  authDomain: "malla-interactiva-ec45d.firebaseapp.com",
+  projectId: "malla-interactiva-ec45d",
+  storageBucket: "malla-interactiva-ec45d.firebasestorage.app",
+  messagingSenderId: "206026131824",
+  appId: "1:206026131824:web:c56827c96ba4c99be227b5"
 };
 
 firebase.initializeApp(firebaseConfig);
