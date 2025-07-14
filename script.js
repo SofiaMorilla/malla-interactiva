@@ -22,7 +22,7 @@ document.getElementById("ingresar").addEventListener("click", () => {
 });
 
 function cargarMaterias(padron) {
-  fetch("materias_completo.json")
+  fetch("materias.json")
     .then(res => res.json())
     .then(data => {
       db.ref("usuarios/" + padron).once("value").then(snapshot => {
