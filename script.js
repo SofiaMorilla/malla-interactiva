@@ -27,20 +27,23 @@ document.getElementById("ingresar").addEventListener("click", () => {
 });
 
 function cargarMaterias(padron) {
-  fetch("materias.json")
+  fetch("materias_completo.json")
     .then(res => res.json())
     .then(data => {
       db.ref("usuarios/" + padron).once("value").then(snapshot => {
         progresoGlobal = snapshot.val() || {};
         renderMaterias(data, padron);
       });
+    }).catch(e => {
+      console.error("Error cargando JSON o Firebase:", e);
+      alert("Error al cargar datos. Revisá consola.");
     });
 }
 
 function renderMaterias(data, padron) {
+  console.log("Renderizando materias para padrón:", padron);
   materiasContainer.innerHTML = "";
 
-  // Orden de años para columnas
   const ordenAños = ["CBC", "1", "2", "3", "4", "5"];
 
   ordenAños.forEach(añoKey => {
@@ -58,7 +61,6 @@ function renderMaterias(data, padron) {
         nota: ""
       };
 
-      // Ver si puede cursar según correlativas (usamos misma lógica)
       const puedeCursar = materia.correlativas_cursada.every(cor => {
         const estadoCor = progresoGlobal[cor.codigo];
         if (!estadoCor) return false;
@@ -78,12 +80,10 @@ function renderMaterias(data, padron) {
         materiaDiv.classList.add("bloqueada");
       }
 
-      // Código de materia (en vez de nombre)
       const codigoSpan = document.createElement("span");
       codigoSpan.textContent = materia.codigo;
       materiaDiv.appendChild(codigoSpan);
 
-      // Controles para TPs y Final
       const controlesDiv = document.createElement("div");
       controlesDiv.className = "controles";
 
@@ -98,7 +98,7 @@ function renderMaterias(data, padron) {
       labelTps.appendChild(document.createTextNode("TP"));
       controlesDiv.appendChild(labelTps);
 
-      // Solo materias de examen tienen opción a Final
+      // Checkbox Final solo si es materia de examen
       if (materia.tipo === "examen") {
         const labelFinal = document.createElement("label");
         const cbFinal = document.createElement("input");
@@ -126,17 +126,12 @@ function guardarProgreso(padron) {
   const progreso = {};
 
   materias.forEach(materia => {
-    const nombre = materia.querySelector("strong").textContent;
+    const codigo = materia.querySelector("span").textContent;
     const checkboxes = materia.querySelectorAll("input[type='checkbox']");
-    const inputs = materia.querySelectorAll("input[type='number']");
-    let codigo = Object.keys(progresoGlobal).find(k => progresoGlobal[k].nombre === nombre);
-    if (!codigo) codigo = nombre;
-
     progreso[codigo] = {
       tps_aprobado: checkboxes[0]?.checked || false,
       final_aprobado: checkboxes[1]?.checked || false,
-      nota: inputs[0]?.value ? parseFloat(inputs[0].value) : null,
-      nombre
+      nota: "" // Nota la dejamos para después si querés
     };
   });
 
@@ -146,15 +141,5 @@ function guardarProgreso(padron) {
 }
 
 function calcularPromedio() {
-  const allNotas = Object.values(progresoGlobal)
-    .map(m => parseFloat(m.nota))
-    .filter(n => !isNaN(n));
-  const promedio = allNotas.length
-    ? (allNotas.reduce((a, b) => a + b, 0) / allNotas.length).toFixed(2)
-    : "N/A";
-
-  const div = document.getElementById("promedio") || document.createElement("div");
-  div.id = "promedio";
-  div.innerHTML = `<hr><h3>Promedio actual: ${promedio}</h3>`;
-  materiasContainer.appendChild(div);
+  // Por ahora dejamos vacío o podés agregar después
 }
