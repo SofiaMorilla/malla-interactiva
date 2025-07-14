@@ -27,7 +27,7 @@ document.getElementById("ingresar").addEventListener("click", () => {
 });
 
 function cargarMaterias(padron) {
-  fetch("materias.json")
+  fetch("materias_completo.json")
     .then(res => res.json())
     .then(data => {
       db.ref("usuarios/" + padron).once("value").then(snapshot => {
@@ -131,7 +131,7 @@ function guardarProgreso(padron) {
     progreso[codigo] = {
       tps_aprobado: checkboxes[0]?.checked || false,
       final_aprobado: checkboxes[1]?.checked || false,
-      nota: "" // Nota la dejamos para después si querés
+      nota: "" // la nota se puede agregar después si querés
     };
   });
 
@@ -141,5 +141,5 @@ function guardarProgreso(padron) {
 }
 
 function calcularPromedio() {
-  // Por ahora dejamos vacío o podés agregar después
+  // esta función se puede completar más adelante si agregás nota
 }
