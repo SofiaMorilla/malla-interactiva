@@ -1,9 +1,385 @@
 {
+  "CBC": [
+    {
+      "codigo": "ICSE",
+      "nombre": "Introducción al Conocimiento de la Sociedad y el Estado",
+      "tipo": "examen",
+      "cursado": "cuatrimestral",
+      "correlativas_cursada": [],
+      "correlativas_final": [],
+      "año": "CBC"
+    },
+    {
+      "codigo": "IPC",
+      "nombre": "Introducción al Pensamiento Científico",
+      "tipo": "examen",
+      "cursado": "cuatrimestral",
+      "correlativas_cursada": [],
+      "correlativas_final": [],
+      "año": "CBC"
+    },
+    {
+      "codigo": "ICP1",
+      "nombre": "Introducción al Conocimiento Proyectual I",
+      "tipo": "examen",
+      "cursado": "cuatrimestral",
+      "correlativas_cursada": [],
+      "correlativas_final": [],
+      "año": "CBC"
+    },
+    {
+      "codigo": "ICP2",
+      "nombre": "Introducción al Conocimiento Proyectual II",
+      "tipo": "examen",
+      "cursado": "cuatrimestral",
+      "correlativas_cursada": [],
+      "correlativas_final": [],
+      "año": "CBC"
+    },
+    {
+      "codigo": "MATCBC",
+      "nombre": "Matemática (CBC)",
+      "tipo": "examen",
+      "cursado": "cuatrimestral",
+      "correlativas_cursada": [],
+      "correlativas_final": [],
+      "año": "CBC"
+    },
+    {
+      "codigo": "FILO",
+      "nombre": "Filosofía",
+      "tipo": "examen",
+      "cursado": "cuatrimestral",
+      "correlativas_cursada": [],
+      "correlativas_final": [],
+      "año": "CBC"
+    },
+    {
+      "codigo": "DIB",
+      "nombre": "Taller de Dibujo",
+      "tipo": "examen",
+      "cursado": "anual",
+      "correlativas_cursada": [],
+      "correlativas_final": [],
+      "año": "CBC"
+    }
+  ],
   "1": [
-    { "codigo": "ARQ1", "nombre": "Arquitectura I", "correlativas": [] },
-    { "codigo": "MAT1", "nombre": "Matemática I", "correlativas": [] }
+    {
+      "codigo": "A1",
+      "nombre": "Arquitectura I",
+      "tipo": "directa",
+      "cursado": "anual",
+      "correlativas_cursada": [
+        {
+          "codigo": "ICSE",
+          "tipo": "final"
+        },
+        {
+          "codigo": "IPC",
+          "tipo": "final"
+        },
+        {
+          "codigo": "ICP1",
+          "tipo": "final"
+        },
+        {
+          "codigo": "ICP2",
+          "tipo": "final"
+        },
+        {
+          "codigo": "MATCBC",
+          "tipo": "final"
+        },
+        {
+          "codigo": "FILO",
+          "tipo": "final"
+        },
+        {
+          "codigo": "DIB",
+          "tipo": "final"
+        }
+      ],
+      "correlativas_final": [
+        "ICSE",
+        "IPC",
+        "ICP1",
+        "ICP2",
+        "MATCBC",
+        "FILO",
+        "DIB"
+      ],
+      "nota": null,
+      "tps_aprobado": true,
+      "final_aprobado": true,
+      "año": "1"
+    },
+    {
+      "codigo": "IAC",
+      "nombre": "Introducción a la Arquitectura Contemporánea",
+      "tipo": "examen",
+      "cursado": "cuatrimestral",
+      "correlativas_cursada": [
+        {
+          "codigo": "ICSE",
+          "tipo": "tps"
+        },
+        {
+          "codigo": "IPC",
+          "tipo": "tps"
+        },
+        {
+          "codigo": "ICP1",
+          "tipo": "tps"
+        },
+        {
+          "codigo": "ICP2",
+          "tipo": "tps"
+        },
+        {
+          "codigo": "MATCBC",
+          "tipo": "tps"
+        },
+        {
+          "codigo": "FILO",
+          "tipo": "tps"
+        },
+        {
+          "codigo": "DIB",
+          "tipo": "tps"
+        }
+      ],
+      "correlativas_final": [
+        "ICSE",
+        "IPC",
+        "ICP1",
+        "ICP2",
+        "MATCBC",
+        "FILO",
+        "DIB"
+      ],
+      "nota": null,
+      "tps_aprobado": false,
+      "final_aprobado": false,
+      "año": "1"
+    },
+    {
+      "codigo": "SRG",
+      "nombre": "Sistemas de Representación Geométrica",
+      "tipo": "directa",
+      "cursado": "anual",
+      "correlativas_cursada": [
+        {
+          "codigo": "ICSE",
+          "tipo": "final"
+        },
+        {
+          "codigo": "IPC",
+          "tipo": "final"
+        },
+        {
+          "codigo": "ICP1",
+          "tipo": "final"
+        },
+        {
+          "codigo": "ICP2",
+          "tipo": "final"
+        },
+        {
+          "codigo": "MATCBC",
+          "tipo": "final"
+        },
+        {
+          "codigo": "FILO",
+          "tipo": "final"
+        },
+        {
+          "codigo": "DIB",
+          "tipo": "final"
+        }
+      ],
+      "correlativas_final": [
+        "ICSE",
+        "IPC",
+        "ICP1",
+        "ICP2",
+        "MATCBC",
+        "FILO",
+        "DIB"
+      ],
+      "nota": null,
+      "tps_aprobado": true,
+      "final_aprobado": true,
+      "año": "1"
+    }
   ],
   "2": [
-    { "codigo": "ARQ2", "nombre": "Arquitectura II", "correlativas": ["ARQ1"] }
+    {
+      "codigo": "A2",
+      "nombre": "Arquitectura II",
+      "tipo": "directa",
+      "cursado": "anual",
+      "correlativas_cursada": [
+        {
+          "codigo": "A1",
+          "tipo": "final"
+        },
+        {
+          "codigo": "SRG",
+          "tipo": "final"
+        },
+        {
+          "codigo": "ITC",
+          "tipo": "tps"
+        }
+      ],
+      "correlativas_final": [],
+      "nota": null,
+      "tps_aprobado": true,
+      "final_aprobado": true,
+      "año": "2"
+    },
+    {
+      "codigo": "RA",
+      "nombre": "Representación Arquitectónica",
+      "tipo": "directa",
+      "cursado": "cuatrimestral",
+      "correlativas_cursada": [
+        {
+          "codigo": "SRG",
+          "tipo": "final"
+        }
+      ],
+      "correlativas_final": [],
+      "nota": null,
+      "tps_aprobado": true,
+      "final_aprobado": true,
+      "año": "2"
+    }
+  ],
+  "3": [
+    {
+      "codigo": "A3",
+      "nombre": "Arquitectura III",
+      "tipo": "directa",
+      "cursado": "anual",
+      "correlativas_cursada": [
+        {
+          "codigo": "A2",
+          "tipo": "final"
+        },
+        {
+          "codigo": "M1",
+          "tipo": "final"
+        },
+        {
+          "codigo": "RA",
+          "tipo": "final"
+        },
+        {
+          "codigo": "IAC",
+          "tipo": "tps"
+        },
+        {
+          "codigo": "C1",
+          "tipo": "tps"
+        },
+        {
+          "codigo": "I1",
+          "tipo": "tps"
+        },
+        {
+          "codigo": "E1",
+          "tipo": "tps"
+        }
+      ],
+      "correlativas_final": [],
+      "nota": null,
+      "tps_aprobado": true,
+      "final_aprobado": true,
+      "año": "3"
+    }
+  ],
+  "4": [
+    {
+      "codigo": "A4",
+      "nombre": "Arquitectura IV",
+      "tipo": "directa",
+      "cursado": "anual",
+      "correlativas_cursada": [
+        {
+          "codigo": "IAC",
+          "tipo": "final"
+        },
+        {
+          "codigo": "ITC",
+          "tipo": "final"
+        },
+        {
+          "codigo": "ITE",
+          "tipo": "final"
+        },
+        {
+          "codigo": "FAA",
+          "tipo": "final"
+        },
+        {
+          "codigo": "MAT2",
+          "tipo": "final"
+        },
+        {
+          "codigo": "A3",
+          "tipo": "final"
+        },
+        {
+          "codigo": "M2",
+          "tipo": "final"
+        },
+        {
+          "codigo": "MP",
+          "tipo": "final"
+        },
+        {
+          "codigo": "H1",
+          "tipo": "tps"
+        },
+        {
+          "codigo": "E1",
+          "tipo": "tps"
+        },
+        {
+          "codigo": "I2",
+          "tipo": "tps"
+        },
+        {
+          "codigo": "C2",
+          "tipo": "tps"
+        }
+      ],
+      "correlativas_final": [],
+      "nota": null,
+      "tps_aprobado": true,
+      "final_aprobado": true,
+      "año": "4"
+    }
+  ],
+  "5": [
+    {
+      "codigo": "PA",
+      "nombre": "Proyecto Arquitectónico",
+      "tipo": "directa",
+      "cursado": "cuatrimestral",
+      "correlativas_cursada": [
+        {
+          "codigo": "PUR",
+          "tipo": "final"
+        }
+      ],
+      "correlativas_final": [],
+      "nota": null,
+      "tps_aprobado": true,
+      "final_aprobado": true,
+      "año": "5"
+    }
   ]
 }
