@@ -5,29 +5,48 @@ body {
   padding: 2rem;
 }
 
-h1, h2, h3 {
+h1 {
+  margin-bottom: 2rem;
   color: #2a3b4c;
 }
 
-input[type="text"],
-input[type="number"] {
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+#materias {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 1rem;
 }
 
-input[type="checkbox"],
-input[type="number"] {
-  margin-left: 0.3rem;
-  margin-right: 0.5rem;
+.año-columna {
+  flex: 0 0 160px; /* ancho fijo por columna */
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgb(0 0 0 / 0.1);
+  padding: 1rem;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.año-columna h2 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #2a3b4c;
 }
 
 .materia {
-  border-radius: 10px;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  border-radius: 8px;
+  padding: 0.5rem;
+  margin-bottom: 0.7rem;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: default;
+  font-weight: 600;
+  font-size: 0.9rem;
   transition: background-color 0.3s ease;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 .materia.habilitada {
@@ -45,3 +64,16 @@ input[type="number"] {
   background-color: #c8e6c9;
   border-left: 4px solid #66bb6a;
 }
+
+.materia .controles {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.materia label {
+  font-weight: normal;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
