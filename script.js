@@ -1,11 +1,16 @@
+// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyD3rr59_b4bLPs5dDa3VyKjghs12b4Z1-s",
   authDomain: "malla-interactiva-ec45d.firebaseapp.com",
+  databaseURL: "https://malla-interactiva-ec45d-default-rtdb.firebaseio.com",
   projectId: "malla-interactiva-ec45d",
   storageBucket: "malla-interactiva-ec45d.firebasestorage.app",
   messagingSenderId: "206026131824",
   appId: "1:206026131824:web:c56827c96ba4c99be227b5"
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
