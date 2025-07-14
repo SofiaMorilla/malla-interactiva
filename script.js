@@ -47,7 +47,6 @@ function renderMaterias(data, padron) {
         nota: ""
       };
 
-      // Evaluar si se habilita
       const puedeCursar = materia.correlativas_cursada.every(cor => {
         const estadoCor = progresoGlobal[cor.codigo];
         if (!estadoCor) return false;
@@ -57,23 +56,21 @@ function renderMaterias(data, padron) {
       });
 
       const materiaDiv = document.createElement("div");
-materiaDiv.className = "materia";
+      materiaDiv.className = "materia";
 
-// 💡 Aplica clase según el estado
-if (estado.final_aprobado || estado.tps_aprobado) {
-  materiaDiv.classList.add("aprobada");
-} else if (puedeCursar) {
-  materiaDiv.classList.add("habilitada");
-} else {
-  materiaDiv.classList.add("bloqueada");
-}
+      if (estado.final_aprobado || estado.tps_aprobado) {
+        materiaDiv.classList.add("aprobada");
+      } else if (puedeCursar) {
+        materiaDiv.classList.add("habilitada");
+      } else {
+        materiaDiv.classList.add("bloqueada");
+      }
 
-      // Nombre materia
       const label = document.createElement("strong");
       label.textContent = materia.nombre;
       materiaDiv.appendChild(label);
 
-      // TPs aprobado
+      // TPs
       const cbTps = document.createElement("input");
       cbTps.type = "checkbox";
       cbTps.checked = estado.tps_aprobado;
@@ -82,7 +79,7 @@ if (estado.final_aprobado || estado.tps_aprobado) {
       materiaDiv.appendChild(document.createTextNode(" - TPs "));
       materiaDiv.appendChild(cbTps);
 
-      // Final aprobado (si corresponde)
+      // Final
       if (materia.tipo === "examen") {
         const cbFinal = document.createElement("input");
         cbFinal.type = "checkbox";
@@ -120,19 +117,16 @@ function guardarProgreso(padron) {
 
   materias.forEach(materia => {
     const nombre = materia.querySelector("strong").textContent;
-
     const checkboxes = materia.querySelectorAll("input[type='checkbox']");
     const inputs = materia.querySelectorAll("input[type='number']");
-
-    let codigo = Object.keys(progresoGlobal).find(k =>
-      progresoGlobal[k].nombre === nombre
-    );
-    if (!codigo) codigo = nombre; // fallback si no existe en base
+    let codigo = Object.keys(progresoGlobal).find(k => progresoGlobal[k].nombre === nombre);
+    if (!codigo) codigo = nombre;
 
     progreso[codigo] = {
       tps_aprobado: checkboxes[0]?.checked || false,
       final_aprobado: checkboxes[1]?.checked || false,
-      nota: inputs[0]?.value ? parseFloat(inputs[0].value) : null
+      nota: inputs[0]?.value ? parseFloat(inputs[0].value) : null,
+      nombre
     };
   });
 
