@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Malla Interactiva - Arquitectura FADU</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Firebase -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malla Interactiva de Arquitectura</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Firebase: App + Database (versiones compat) -->
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 </head>
 <body>
-  <h1>Malla Interactiva - Arquitectura</h1>
+  <h1>Malla de la Carrera</h1>
 
-  <label for="padron">Ingresá tu padrón:</label>
-  <input type="text" id="padron" placeholder="Ej: 123456">
-  <button id="ingresar">Ingresar</button>
+  <div>
+    <label for="padron">Ingresá tu padrón:</label>
+    <input type="text" id="padron" placeholder="Ej: 123456" />
+    <button id="ingresar">Ingresar</button>
+  </div>
 
   <div id="materias" style="margin-top: 2rem;"></div>
 
