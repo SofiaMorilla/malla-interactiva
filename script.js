@@ -57,9 +57,16 @@ function renderMaterias(data, padron) {
       });
 
       const materiaDiv = document.createElement("div");
-      materiaDiv.className = "materia";
-      materiaDiv.style.marginBottom = "0.8rem";
-      materiaDiv.style.opacity = puedeCursar ? "1" : "0.4";
+materiaDiv.className = "materia";
+
+// 💡 Aplica clase según el estado
+if (estado.final_aprobado || estado.tps_aprobado) {
+  materiaDiv.classList.add("aprobada");
+} else if (puedeCursar) {
+  materiaDiv.classList.add("habilitada");
+} else {
+  materiaDiv.classList.add("bloqueada");
+}
 
       // Nombre materia
       const label = document.createElement("strong");
