@@ -1,0 +1,9 @@
+{
+  "1": [
+    { "codigo": "ARQ1", "nombre": "Arquitectura I", "correlativas": [] },
+    { "codigo": "MAT1", "nombre": "Matemática I", "correlativas": [] }
+  ],
+  "2": [
+    { "codigo": "ARQ2", "nombre": "Arquitectura II", "correlativas": ["ARQ1"] }
+  ]
+}
